@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password:
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: ib-shelf_development
+
+test:
+  <<: *default
+  database: ib-shelf_test
+
+production:
+  <<: *default
+  database: ib-shelf_production
+  username: ib-shelf
+  password: <%= ENV['IB-SHELF_DATABASE_PASSWORD'] %>
